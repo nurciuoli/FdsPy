@@ -20,13 +20,13 @@ Projects using FactSet's APIs for data analysis
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/8aee2651-fec8-4d94-9ba5-d15a58d0a231)
 -----------------
 ### myqengine
-![image](https://github.com/nurciuoli/FdsPy/assets/57609455/16b4c149-74de-4487-81a6-0b4906a1a0d1)
+![image](https://github.com/nurciuoli/FdsPy/assets/57609455/59f974f0-7ead-42c5-9d06-fdb55b1789ee)
 -----------------
 ### myspar
-![image](https://github.com/nurciuoli/FdsPy/assets/57609455/8fc97910-2914-472a-87eb-538ff2aba67b)
+![image](https://github.com/nurciuoli/FdsPy/assets/57609455/08b69ef9-ad23-49da-b3b2-4e1284de299e)
 ------------------
 ### myfpe
-![image](https://github.com/nurciuoli/FdsPy/assets/57609455/d8c24e71-f387-4a07-922a-53494f782c25)
+![image](https://github.com/nurciuoli/FdsPy/assets/57609455/96ef46aa-96b1-4fde-9765-588cf97d4198)
 
 ## Links
 - __Official AnalyticsAPI SDK__ - https://github.com/factset/analyticsapi-engines-python-sdk
