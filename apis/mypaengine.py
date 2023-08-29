@@ -229,9 +229,9 @@ def calc_unlinked_template(portfolios= ["LION:IVV-US"],
             for x in range(len(groups)):
                 all_groups = get_pa_groups()
                 group_id = [id for id in list(
-                all_groups[0].data.keys()) if all_groups[0].data[id].category == groups[x][1] and 
-                                      all_groups[0].data[id].directory == groups[x][2] and
-                                      all_groups[0].data[id].name == groups[x][0]][0]
+                all_groups[0].data.keys()) if all_groups[0].data[id].category == groups[x]['category'] and 
+                                      all_groups[0].data[id].directory == groups[x]['directory'] and
+                                      all_groups[0].data[id].name == groups[x]['name']][0]
                 group_id_list.append(PACalculationGroup(id=group_id))
         else:
             group_id_list.append(PACalculationGroup(id='E879EB3AC62F7725A0B33FCE30C3E4719B99B76F06913C62F4C6DED11D5EA197'))
