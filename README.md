@@ -1,5 +1,5 @@
 # FdsPy
-Projects using FactSet APIs
+Projects using FactSet's APIs for data analysis
 
 ## [APIs](https://github.com/nurciuoli/FdsPy/tree/main/apis)
 -  [__mypaengine__](https://github.com/nurciuoli/FdsPy/tree/main/apis/pa) - PA Engine API [(documentation)](https://developer.factset.com/api-catalog/pa-engine-api)
