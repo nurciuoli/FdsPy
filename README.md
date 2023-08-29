@@ -2,10 +2,10 @@
 Projects using FactSet APIs
 
 ## [APIs](https://github.com/nurciuoli/FdsPy/tree/main/apis)
--  mypaengine - PA Engine API Wrapper
--  myqengine - Quant Engine API Wrapper
--  mysparengine - SPAR Engine API Wrapper
--  myfpe - FPE API Wrapper
+-  __mypaengine__ - [PA Engine API](https://developer.factset.com/api-catalog/pa-engine-api)
+-  __myqengine__ - [Quant Engine API](https://developer.factset.com/api-catalog/quant-engine-api)
+-  mysparengine - [SPAR Engine API](https://developer.factset.com/api-catalog/spar-engine-api)
+-  myfpe - [FPE API](https://developer.factset.com/api-catalog/factset-programmatic-environment-api)
 
 ## Setup
 ### Requirements
