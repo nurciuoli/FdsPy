@@ -1,13 +1,11 @@
 # FdsPy
 Projects using FactSet APIs
-
-
-## PA Engine Wrapper
-
-### Setup
+## Setup
 - Set FACSET_USERNAME
 - Set FACTSET_API_KEY
 
+## APIs
+### mypaengine - PA Engine Wrapper
+#### PA Document Inputs
+![image](https://github.com/nurciuoli/FdsPy/assets/57609455/bfe12af1-afca-479c-9449-7066573697e5)
 
-### PA Document Inputs
-![image](https://media.github.factset.com/user/11034/files/be65045b-3df9-460d-9d23-ed511455aabf)
