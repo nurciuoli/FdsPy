@@ -10,7 +10,7 @@ Projects using FactSet's APIs for data analysis
 ## Setup
 ### Requirements
 - __Packages Required__ - pip install fds.analyticsapi.engines
-- __Authentication__ - generate API Key & set IP allowance at the [Developer Portal](https://developer.factset.com/)
+- __Authentication__ - generate API Key & whitelist IP address (or address range) at the [Developer Portal](https://developer.factset.com/)
 ### Environment Variables
 - __FACSET_USERNAME__ - Username & Serial (ex. FDS_US_DEMO-123842)
 - __FACTSET_API_KEY__ - accessed via developer portal
