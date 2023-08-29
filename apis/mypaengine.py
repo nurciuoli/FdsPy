@@ -184,7 +184,7 @@ class DocumentTemplate:
             pa_accounts = [PAIdentifier(id=y[1], holdingsmode=mode)]
             pa_benchmarks = [PAIdentifier(id=benchmarks[y[0]], holdingsmode=mode)]
             #Store accts benchs and dates in our dictionary
-            pa_calcs[str(portfolios[y[0]]+benchmarks[y[0]])] = PACalculationParameters(componentid=self.component_id, accounts=pa_accounts,benchmarks=pa_benchmarks, dates=pa_dates,currencyisocode=curr,componentdetail = componentdetail)
+            pa_calcs[str(portfolios[y[0]]+'_x_'+benchmarks[y[0]])] = PACalculationParameters(componentid=self.component_id, accounts=pa_accounts,benchmarks=pa_benchmarks, dates=pa_dates,currencyisocode=curr,componentdetail = componentdetail)
 
         self.root = PACalculationParametersRoot(data=pa_calcs)
         #Pass the PA inputs
@@ -257,7 +257,7 @@ def calc_unlinked_template(portfolios= ["LION:IVV-US"],
         #build final calculation
         data= {}
         for portfolio,benchmark in zip(portfolios,benchmarks):
-            root_index = str(portfolio)+"_"+str(benchmark)
+            root_index = str(portfolio)+"_x_"+str(benchmark)
             data[str(root_index)]=PACalculationParameters(componentid=comp_id ,accounts=[PAIdentifier(id=str(portfolio),holdingsmode=holdings_mode)],benchmarks=[PAIdentifier(id=str(benchmark),holdingsmode=holdings_mode)],dates=dates,columns =col_id_list,groups=group_id_list,componentdetail = level)
             try:
                 pa_root = PACalculationParametersRoot(data=data)
