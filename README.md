@@ -1,9 +1,22 @@
 # FdsPy
 Projects using FactSet APIs
+
+## Table of Contents
+- APIs - List of Custom API Wrappers
+- Setup - Environment Variable Definitions
+- Links - Additional links & resources
+
+## APIs
+-  mypaengine - PA Engine Wrapper
+
 ## Setup
+### Requirements
+- pip install fds.analyticsapi.engines
+- generate API Key & set IP allowance at the Developer Portal
+### Environment Variables
 - Set FACSET_USERNAME
 - Set FACTSET_API_KEY
 
-## APIs
-### mypaengine - PA Engine Wrapper
-
+## Links
+- Official AnalyticsAPI SDK - https://github.com/factset/analyticsapi-engines-python-sdk
+- Developer Portal - https://developer.factset.com/
