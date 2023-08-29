@@ -17,7 +17,7 @@ Projects using FactSet's APIs for data analysis
 
 ## Screenshots
 ### mypaengine
-![image](https://github.com/nurciuoli/FdsPy/assets/57609455/34211a86-6549-4cb3-8c01-54fd68c1e4ca)
+![image](https://github.com/nurciuoli/FdsPy/assets/57609455/8aee2651-fec8-4d94-9ba5-d15a58d0a231)
 -----------------
 ### myqengine
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/22f692c2-374b-40e0-968f-982b3c3d1c83)
