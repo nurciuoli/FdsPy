@@ -23,7 +23,7 @@ Projects using FactSet's APIs for data analysis
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/22f692c2-374b-40e0-968f-982b3c3d1c83)
 -----------------
 ### myspar
-![image](https://github.com/nurciuoli/FdsPy/assets/57609455/ad3a34d1-9d43-4a3b-8e2f-b76b83a5a54d)
+![image](https://github.com/nurciuoli/FdsPy/assets/57609455/d9558865-6dbe-492a-a86c-00d3128ee5ac)
 ------------------
 ### myfpe
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/d8c24e71-f387-4a07-922a-53494f782c25)
