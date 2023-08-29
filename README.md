@@ -6,7 +6,7 @@ Projects using FactSet APIs
 - Setup - Environment Variable Definitions
 - Links - Additional links & resources
 
-## APIs
+## [APIs] (**https://github.com/nurciuoli/FdsPy/tree/main/apis**)
 -  mypaengine - PA Engine Wrapper
 
 ## Setup
