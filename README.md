@@ -2,7 +2,7 @@
 Projects using FactSet APIs
 
 
-## PA Engine Wrapper
+## mypaengine - PA Engine Wrapper
 
 ### Setup
 - Set FACSET_USERNAME
