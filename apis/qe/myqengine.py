@@ -49,8 +49,8 @@ fds_config.retries = Retry(
 #connect to api
 api_client = ApiClient(fds_config)
 
-class screen_universe:
-    def __init__(self,universe_expr,universe_type):
+class ScreenUniverse:
+    def __init__(self,universe_expr= 'FG_CONSTITUENTS(IVV-US,0,CLOSE)=1',universe_type= 'Equity'):
         self.universe_expr = universe_expr
         self.universe_type= universe_type
         self.source = 'ScreeningExpressionUniverse'
@@ -60,7 +60,7 @@ class screen_universe:
     def get_univ(self):
         return QuantScreeningExpressionUniverse(universe_expr = self.universe_expr,universe_type = self.universe_type,source= self.source,security_expr = self.security_expr)
 
-class id_universe:
+class IdUniverse:
     def __init__(self,ids,universe_type):
         self.ids = ids
         self.universe_type= universe_type
@@ -69,7 +69,7 @@ class id_universe:
         return self
     def get_univ(self):
         return QuantIdentifierUniverse(identifiers = self.ids,universe_type = self.universe_type,source= self.source)
-class time_series:
+class TimeSeries:
     def __init__(self,start_date,end_date = '0',frequency = 'M',calendar = 'NAY'):
         self.start_date = start_date
         self.end_date= end_date
@@ -80,7 +80,7 @@ class time_series:
     def get_dates(self):
             return QuantFdsDate(source = 'FdsDate',start_date = self.start_date,end_date = self.end_date,frequency=self.frequency,calendar=self.calendar)
 
-class post_calc:
+class QeCalculation:
     def __init__(self,response):
         self.data = response[0]
         self.metadata = response[1]
@@ -148,6 +148,6 @@ def calculate(universe, dates, formulas,source = 'ScreeningExpression',is_array_
     )
     response = QuantCalculationsApi(api_client).post_and_calculate(quant_calculation_parameters_root=params)
     rep = get_results(response)
-    return post_calc(rep)
+    return QeCalculation(rep)
 
 
