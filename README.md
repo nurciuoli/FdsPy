@@ -9,7 +9,7 @@ Projects using FactSet's APIs for data analysis
 
 ## Setup
 ### Requirements
-- __Packages Required__ - pip install fds.analyticsapi.engines
+- __Packages Required__ - [pip install fds.analyticsapi.engines](https://pypi.org/project/fds.analyticsapi.engines/)
 - __Authentication__ - generate API Key & whitelist IP address (or address range) at the [Developer Portal](https://developer.factset.com/)
 ### Environment Variables
 - __FACSET_USERNAME__ - Username & Serial (ex. FDS_US_DEMO-123842)
@@ -29,5 +29,5 @@ Projects using FactSet's APIs for data analysis
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/96ef46aa-96b1-4fde-9765-588cf97d4198)
 
 ## Links
-- __Official AnalyticsAPI SDK__ - https://github.com/factset/analyticsapi-engines-python-sdk
+- __Official Analytics API SDK__ - https://github.com/factset/analyticsapi-engines-python-sdk
 - __Developer Portal__ - https://developer.factset.com/
