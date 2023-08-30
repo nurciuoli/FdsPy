@@ -4,7 +4,7 @@ Projects using FactSet's APIs for data analysis
 ## [APIs](https://github.com/nurciuoli/FdsPy/tree/main/apis)
 -  [__mypaengine__](https://github.com/nurciuoli/FdsPy/tree/main/apis/pa) - PA Engine API [(official documentation)](https://developer.factset.com/api-catalog/pa-engine-api)
 -  [__myqengine__](https://github.com/nurciuoli/FdsPy/tree/main/apis/qe) - Quant Engine API [(official documentation)](https://developer.factset.com/api-catalog/quant-engine-api)
--  [__mysparengine__](https://github.com/nurciuoli/FdsPy/tree/main/apis/spar) - SPAR Engine API [(official documentation)](https://developer.factset.com/api-catalog/spar-engine-api)
+-  [__myspengine__](https://github.com/nurciuoli/FdsPy/tree/main/apis/spar) - SPAR Engine API [(official documentation)](https://developer.factset.com/api-catalog/spar-engine-api)
 -  [__myfpe__](https://github.com/nurciuoli/FdsPy/tree/main/apis/fpe) - FactSet Programmatic Environment API [(official documentation)](https://developer.factset.com/api-catalog/factset-programmatic-environment-api)
 
 ## Setup
@@ -22,7 +22,7 @@ Projects using FactSet's APIs for data analysis
 ### myqengine
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/59f974f0-7ead-42c5-9d06-fdb55b1789ee)
 -----------------
-### myspar
+### myspengine
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/08b69ef9-ad23-49da-b3b2-4e1284de299e)
 ------------------
 ### myfpe
