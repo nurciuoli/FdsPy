@@ -7,7 +7,10 @@
 ### 1. Document Template Class
 ```python
 class DocumentTemplate:
-    def __init__(self,component_id=None, pa_document_name = None, pa_component_category = None, pa_component_name = None,**kwargs):
+    def __init__(self,component_id=None,
+                    pa_document_name = None,
+                    pa_component_category = None,
+                    pa_component_name = None,**kwargs):
         if(component_id==None):
             self.component_id = find_component_id(pa_document_name,pa_component_category,pa_component_name)
         else:
