@@ -1,5 +1,5 @@
-### 1. mypaengine
-#### PA Document Inputs
-![image](https://github.com/nurciuoli/FdsPy/assets/57609455/bfe12af1-afca-479c-9449-7066573697e5)
-#### Official SDK: https://github.com/factset/analyticsapi-engines-python-sdk
-#### Official Documentation: https://developer.factset.com/api-catalog/pa-engine-api
+## APIs
+-  [__mypaengine__](https://github.com/nurciuoli/FdsPy/tree/main/apis/pa) - PA Engine API [(official documentation)](https://developer.factset.com/api-catalog/pa-engine-api)
+-  [__myqengine__](https://github.com/nurciuoli/FdsPy/tree/main/apis/qe) - Quant Engine API [(official documentation)](https://developer.factset.com/api-catalog/quant-engine-api)
+-  [__mysparengine__](https://github.com/nurciuoli/FdsPy/tree/main/apis/spar) - SPAR Engine API [(official documentation)](https://developer.factset.com/api-catalog/spar-engine-api)
+-  [__myfpe__](https://github.com/nurciuoli/FdsPy/tree/main/apis/fpe) - FactSet Programmatic Environment API [(official documentation)](https://developer.factset.com/api-catalog/factset-programmatic-environment-api)
