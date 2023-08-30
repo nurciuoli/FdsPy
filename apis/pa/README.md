@@ -63,9 +63,7 @@ pa_doc.data
 ```
 ##### Result
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/7cec6b76-2c7f-4a5b-9c5a-37ff10eac28b)
-
-#### Root
-##### Example: Calling Root Attribute
+#### Example: Calling Root Attribute
 ```python
 pa_doc.root
 ```
