@@ -61,7 +61,7 @@ class ScreenUniverse:
         return QuantScreeningExpressionUniverse(universe_expr = self.universe_expr,universe_type = self.universe_type,source= self.source,security_expr = self.security_expr)
 
 class IdUniverse:
-    def __init__(self,ids,universe_type):
+    def __init__(self,ids,universe_type= 'Equity'):
         self.ids = ids
         self.universe_type= universe_type
         self.source = 'IdentifierUniverse'
