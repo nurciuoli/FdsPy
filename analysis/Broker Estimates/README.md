@@ -3,6 +3,6 @@ Near-term earnings estimates have remained relatively flat over the last 24 mont
 
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/2cc8e1eb-bec9-4607-9b7f-9c50bee2ce4d)
 
-These two tech giants continue to breakout given positive Quarterly Earnings Surprises
+These two tech giants continue to breakout given positive Quarterly Earnings Surprise & exemplified by the AI wave.
 
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/f31bd8ea-91e1-40e5-81fe-176a59c8148e)
