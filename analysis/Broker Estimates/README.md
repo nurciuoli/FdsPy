@@ -1,7 +1,8 @@
 ### Broker Estimates of the Magnificent 7 
-Near-term earnings estimates have remained relatively flat over the last 24 months, with exception to Nvidia & Meta who Analysts are yet to reach consensus on. 
-
+Near-term earnings estimates have remained relatively flat over the last 24 months, with exception to Nvidia & Meta who Analysts cannot seem to come to consensus on.
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/2cc8e1eb-bec9-4607-9b7f-9c50bee2ce4d)
+
+![image](https://github.com/nurciuoli/FdsPy/assets/57609455/bd4bc743-d0d3-448b-acf5-f499065a630e)
 
 These two tech giants continue to breakout given positive Quarterly Earnings Surprise & exemplified by the AI wave.
 
