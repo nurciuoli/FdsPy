@@ -6,6 +6,6 @@ For the most part, fund managers are betting on Industrials while underweighting
 ### Avg Fund Sector Exposure
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/1d20f8c4-4a67-45ff-85c7-2c0828095c03)
 ### Fund Sector Exposure Distributions
-![image](https://github.com/nurciuoli/FdsPy/assets/57609455/e33f1980-7988-4e8f-8200-664a375ffe56)
-### Heatmaps
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/62541bf7-0494-4d49-8d1c-0a652f109d37)
+### Heatmaps
+![image](https://github.com/nurciuoli/FdsPy/assets/57609455/e33f1980-7988-4e8f-8200-664a375ffe56)
