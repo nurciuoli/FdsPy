@@ -6,9 +6,12 @@ from dotenv import load_dotenv
 load_dotenv()
 fred_api_key = os.getenv("FRED_API_KEY")
 
-def get_fred_series(series_id,start_date, end_date, frequency):
+def get_fred_series(series_id,start_date, end_date, frequency=None):
     try:
-        data = fredapi.Fred(fred_api_key).get_series(series_id, start_date,end_date, frequency=frequency)
+        if (frequency!=None):
+            data = fredapi.Fred(fred_api_key).get_series(series_id, start_date,end_date, frequency=frequency)
+        else:
+            data = fredapi.Fred(fred_api_key).get_series(series_id, start_date,end_date)
         return pd.DataFrame(data).rename(columns={0: series_id})
     except Exception as e: 
         print(e)
