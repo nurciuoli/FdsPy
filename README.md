@@ -15,6 +15,12 @@ Projects using FactSet's APIs for data analysis
 - __FACSET_USERNAME__ - Username & Serial (ex. FDS_US_DEMO-123842)
 - __FACTSET_API_KEY__ - accessed via developer portal
 
+## Analysis 
+Specific projects utilizing these API Wrappers
+- [__Fund Positioning__](https://github.com/nurciuoli/FdsPy/tree/main/analysis/Top%20Fund%20Positioning) - Analysis of how the top funds by AUM relative to specific indices are positioning
+- [__The Magnificent Seven Broker Estimates__](https://github.com/nurciuoli/FdsPy/tree/main/analysis/Broker%20Estimates) - Analysis of individual broker estimates for EPS have changed of the Magnificent 7
+- [__Nvidia Holders__](https://github.com/nurciuoli/FdsPy/tree/main/analysis/Nvidia%20Holder%20Analysis) - Analysis of Mutual funds that current hold Nvidia
+
 ## Screenshots
 ### mypaengine
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/8aee2651-fec8-4d94-9ba5-d15a58d0a231)
