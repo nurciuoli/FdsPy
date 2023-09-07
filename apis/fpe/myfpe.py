@@ -8,7 +8,7 @@ import requests
 import base64
 import time
 import urllib.parse 
-
+import re
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -198,6 +198,40 @@ def post_file(path,data):
         time.sleep(5)
     #print('Status: ' + r.json()['status']+'| Upload Path: '+path)
     return path
+
+def post_file_to_ofdb(name,data):
+    #set environment to upload files
+    # - interactive
+    # - batch
+    env = 'interactive'
+    #env = 'batch'
+    path = name+'.csv'
+    uploadUrl = api + '/v1/files/' + env + '/' + path
+
+    r = requests.post(uploadUrl,headers=headers,data=data.to_csv())
+    #print('HTTP Status: {}'.format(r.status_code))
+    upload_id = r.json()['id']
+    #print("Upload id: " + upload_id)
+    pollUrl = r.headers['Location']
+    # Poll to see when the file is done uploading
+    while True:
+        #print("Polling for upload finish...")
+        r = requests.get(api + pollUrl, headers=headers)
+        if r.status_code == 200:
+            break
+        elif r.status_code > 299:
+            print('Pickup request failed: ' + r.status_code)
+            raise SystemExit('Pickup request failed')
+        time.sleep(5)
+    #print('Status: ' + r.json()['status']+'| Upload Path: '+path)
+    script = "\
+import pandas as pd \n\
+from fds.quant.ofdb import OFDB \n\
+from fds.quant.output.dataframe import to_csv \n\
+df = pd.read_csv('"+path+"') \n\
+OFDB(" + path+",data = df,create_acct = True, acct_desc = 'Created with FPE API')"
+    req = post_fpe_script(script)
+    return req
 
 def retrieve_file(path):
     script = "\
