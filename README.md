@@ -28,7 +28,7 @@ Custom wrappers using FactSet's APIs for data analysis
 ### myfpe
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/96ef46aa-96b1-4fde-9765-588cf97d4198)
 
-## Analysis 
+## [Analysis](https://github.com/nurciuoli/MyProjects/tree/main)
 Specific projects utilizing these API Wrappers
 - [__Fund Positioning__](https://github.com/nurciuoli/FdsPy/tree/main/analysis/Top%20Fund%20Positioning) - Analysis of how the top funds by AUM relative to specific indices are positioning
 ![image](https://github.com/nurciuoli/FdsPy/assets/57609455/62541bf7-0494-4d49-8d1c-0a652f109d37)
