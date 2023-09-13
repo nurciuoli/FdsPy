@@ -1,11 +1,22 @@
 # FdsPy
 Custom wrappers using FactSet's APIs for data analysis
 
-## [APIs](https://github.com/nurciuoli/FdsPy/tree/main/apis)
--  [__mypaengine__](https://github.com/nurciuoli/FdsPy/tree/main/apis/pa) - PA Engine API [(official documentation)](https://developer.factset.com/api-catalog/pa-engine-api)
--  [__myqengine__](https://github.com/nurciuoli/FdsPy/tree/main/apis/qe) - Quant Engine API [(official documentation)](https://developer.factset.com/api-catalog/quant-engine-api)
--  [__myspengine__](https://github.com/nurciuoli/FdsPy/tree/main/apis/spar) - SPAR Engine API [(official documentation)](https://developer.factset.com/api-catalog/spar-engine-api)
--  [__myfpe__](https://github.com/nurciuoli/FdsPy/tree/main/apis/fpe) - FactSet Programmatic Environment API [(official documentation)](https://developer.factset.com/api-catalog/factset-programmatic-environment-api)
+## [Modules](https://github.com/nurciuoli/FdsPy/tree/main/FdsPy)
+- PA (Portfolio Analysis)
+  - [__mypaengine__](https://github.com/nurciuoli/FdsPy/tree/main/apis/pa) - PA Engine API [(official documentation)](https://developer.factset.com/api-catalog/pa-engine-api)
+  - utils
+- QE (Quant Engine)
+  - [__myqengine__](https://github.com/nurciuoli/FdsPy/tree/main/apis/qe) - Quant Engine API [(official documentation)](https://developer.factset.com/api-catalog/quant-engine-api)
+  - utils
+- SPAR
+  - [__myspengine__](https://github.com/nurciuoli/FdsPy/tree/main/apis/spar) - SPAR Engine API [(official documentation)](https://developer.factset.com/api-catalog/spar-engine-api)
+- FPE (FactSet Programmatic Environment)
+  - [__myfpe__](https://github.com/nurciuoli/FdsPy/tree/main/apis/fpe) - FactSet Programmatic Environment API [(official documentation)](https://developer.factset.com/api-catalog/factset-programmatic-environment-api)
+  - utils
+- Misc
+  - utils
+    - Google Trends
+    - Fred API 
 
 ## Setup
 ### Requirements
