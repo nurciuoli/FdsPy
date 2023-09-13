@@ -49,6 +49,8 @@ fds_config.retries = Retry(
 #connect to api
 api_client = ApiClient(fds_config)
 
+
+
 class ScreenUniverse:
     def __init__(self,universe_expr= 'FG_CONSTITUENTS(IVV-US,0,CLOSE)=1',universe_type= 'Equity'):
         self.universe_expr = universe_expr
@@ -70,7 +72,7 @@ class IdUniverse:
     def get_univ(self):
         return QuantIdentifierUniverse(identifiers = self.ids,universe_type = self.universe_type,source= self.source)
 class TimeSeries:
-    def __init__(self,start_date,end_date = '0',frequency = 'M',calendar = 'NAY'):
+    def __init__(self,start_date='0',end_date = '0',frequency = 'M',calendar = 'NAY'):
         self.start_date = start_date
         self.end_date= end_date
         self.frequency = frequency
@@ -81,12 +83,56 @@ class TimeSeries:
             return QuantFdsDate(source = 'FdsDate',start_date = self.start_date,end_date = self.end_date,frequency=self.frequency,calendar=self.calendar)
 
 class QeCalculation:
-    def __init__(self,response):
-        self.data = response[0]
-        self.metadata = response[1]
+    def __init__(self, universe=None, dates=None, data_dict=None, formulas=None, source='ScreeningExpression', is_array=False, data=None, metadata=None):
+        self.universe = universe
+        self.dates = dates
+        self.data_dict = data_dict
+        self.formulas = formulas
+        self.source = source
+        self.is_array = is_array
+        self.data = data
+        self.metadata = metadata
+
     def __str__(self):
         return self
-    
+
+    def query(self, universe=None, dates=None, data_dict=None, formulas=None, source=None, is_array=None):
+        # Use the instance variables if no override is provided
+        universe = universe or self.universe
+        dates = dates or self.dates
+        data_dict = data_dict or self.data_dict
+        formulas = formulas or self.formulas
+        source = source or self.source
+        is_array = is_array if is_array is not None else self.is_array
+
+        if(formulas!=None):
+            params = QuantCalculationParametersRoot(
+                data={'1': QuantCalculationParameters(universe=universe.get_univ(), dates=dates.get_dates(), formulas=formulas)},
+                meta=QuantCalculationMeta(format='Feather'),
+            )
+            response = QuantCalculationsApi(api_client).post_and_calculate(quant_calculation_parameters_root=params)
+            rep = get_results(response)
+            self.data = rep[0]
+            self.metadata = rep[1]
+            return self
+        else:
+            quant_formulas = []
+            for key,value in data_dict.items():
+                if(source=='ScreeningExpression'):
+                    quant_formulas.append(QuantScreeningExpression(expr=value,name=key,source = source))
+                else:
+                    quant_formulas.append(QuantFqlExpression(expr=value,name=key,source = source,is_array_return_type=is_array))
+
+            params = QuantCalculationParametersRoot(
+                data={'1': QuantCalculationParameters(universe=universe.get_univ(), dates=dates.get_dates(), formulas=quant_formulas)},
+                meta=QuantCalculationMeta(format='Feather'),
+            )
+            response = QuantCalculationsApi(api_client).post_and_calculate(quant_calculation_parameters_root=params)
+            rep = get_results(response)
+            self.data = rep[0]
+            self.metadata = rep[1]
+            return self
+
 def get_data(calc_id, calc_unit_id):
     # Get the calculation data
     response = QuantCalculationsApi(api_client).get_calculation_unit_result_by_id(id=calc_id, unit_id=calc_unit_id)
@@ -133,21 +179,3 @@ def get_results(response):
                 print('Error message : ' + str(calc_unit.errors))
 
     return (data, metadata)
-
-
-def calculate(universe, dates, formulas,source = 'ScreeningExpression',is_array_return_type = False):
-    quant_formulas = []
-    for formula in formulas:
-        if(source=='ScreeningExpression'):
-            quant_formulas.append(QuantScreeningExpression(expr=formula,name=formula,source = source))
-        else:
-            quant_formulas.append(QuantFqlExpression(expr=formula,name=formula,source = source,is_array_return_type= is_array_return_type))
-    params = QuantCalculationParametersRoot(
-        data={'1': QuantCalculationParameters(universe=universe.get_univ(), dates=dates.get_dates(), formulas=quant_formulas)},
-        meta=QuantCalculationMeta(format='Feather'),
-    )
-    response = QuantCalculationsApi(api_client).post_and_calculate(quant_calculation_parameters_root=params)
-    rep = get_results(response)
-    return QeCalculation(rep)
-
-

@@ -2,6 +2,9 @@ import fredapi
 import pandas as pd
 import os
 from pytrends.request import TrendReq
+import numpy as np
+import re
+
 from dotenv import load_dotenv
 load_dotenv()
 fred_api_key = os.getenv("FRED_API_KEY")
@@ -26,4 +29,26 @@ def get_google_trends(search_list,start_date,end_date):
     except Exception as e: 
         print(e)
 
-        
+def replace_equation(map_dict, equation):
+    keys = sorted(map_dict, key=len, reverse=True) # sorted by length, in case one expression is a prefix of another
+    regexp = re.compile('|'.join(map(re.escape, keys)))
+
+    while re.search('#P.P', equation):
+        equation = regexp.sub(lambda match: '(' + map_dict[match.group(0)] + ')', equation)
+    return equation  # Add a semicolon at the end of the equation
+
+def convert_formulas_with_ref_var(variables,formulas):
+
+    concatenated_variables = []
+    for variable in variables:
+        concatenated_variable = "#P." + str(variable)
+        concatenated_variables.append(concatenated_variable)
+    mapping_table = dict(zip(concatenated_variables, formulas))
+
+    map_dict = mapping_table
+    transformed_formulas = []
+    for formula in formulas:
+        transformed_formulas.append(replace_equation(map_dict, formula))
+
+    return transformed_formulas
+
