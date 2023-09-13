@@ -70,7 +70,7 @@ class IdUniverse:
     def get_univ(self):
         return QuantIdentifierUniverse(identifiers = self.ids,universe_type = self.universe_type,source= self.source)
 class TimeSeries:
-    def __init__(self,start_date,end_date = '0',frequency = 'M',calendar = 'NAY'):
+    def __init__(self,start_date='0',end_date = '0',frequency = 'M',calendar = 'NAY'):
         self.start_date = start_date
         self.end_date= end_date
         self.frequency = frequency
@@ -134,20 +134,27 @@ def get_results(response):
 
     return (data, metadata)
 
-
-def calculate(universe, dates, formulas,source = 'ScreeningExpression',is_array_return_type = False):
-    quant_formulas = []
-    for formula in formulas:
-        if(source=='ScreeningExpression'):
-            quant_formulas.append(QuantScreeningExpression(expr=formula,name=formula,source = source))
-        else:
-            quant_formulas.append(QuantFqlExpression(expr=formula,name=formula,source = source,is_array_return_type= is_array_return_type))
-    params = QuantCalculationParametersRoot(
-        data={'1': QuantCalculationParameters(universe=universe.get_univ(), dates=dates.get_dates(), formulas=quant_formulas)},
-        meta=QuantCalculationMeta(format='Feather'),
-    )
-    response = QuantCalculationsApi(api_client).post_and_calculate(quant_calculation_parameters_root=params)
-    rep = get_results(response)
-    return QeCalculation(rep)
-
-
+def calculate(universe, dates, data_dict=None,formulas=None,source = 'ScreeningExpression',is_array=False):
+    if(formulas!=None):
+        params = QuantCalculationParametersRoot(
+            data={'1': QuantCalculationParameters(universe=universe.get_univ(), dates=dates.get_dates(), formulas=formulas)},
+            meta=QuantCalculationMeta(format='Feather'),
+        )
+        response = QuantCalculationsApi(api_client).post_and_calculate(quant_calculation_parameters_root=params)
+        rep = get_results(response)
+        return QeCalculation(rep)
+    else:
+        quant_formulas = []
+        for key,value in data_dict.items():
+            if(source=='ScreeningExpression'):
+                quant_formulas.append(QuantScreeningExpression(expr=value,name=key,source = source))
+            else:
+                quant_formulas.append(QuantFqlExpression(expr=value,name=key,source = source,is_array_return_type= is_array))
+        
+        params = QuantCalculationParametersRoot(
+            data={'1': QuantCalculationParameters(universe=universe.get_univ(), dates=dates.get_dates(), formulas=quant_formulas)},
+            meta=QuantCalculationMeta(format='Feather'),
+        )
+        response = QuantCalculationsApi(api_client).post_and_calculate(quant_calculation_parameters_root=params)
+        rep = get_results(response)
+        return QeCalculation(rep)
