@@ -82,7 +82,7 @@ class TimeSeries:
     def get_dates(self):
             return QuantFdsDate(source = 'FdsDate',start_date = self.start_date,end_date = self.end_date,frequency=self.frequency,calendar=self.calendar)
 
-class QeCalculation:
+class Calculation:
     def __init__(self, universe=None, dates=None, data_dict=None, formulas=None, source='ScreeningExpression', is_array=False, data=None, metadata=None):
         self.universe = universe
         self.dates = dates
