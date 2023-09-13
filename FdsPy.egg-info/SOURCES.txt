@@ -5,3 +5,15 @@ FdsPy.egg-info/PKG-INFO
 FdsPy.egg-info/SOURCES.txt
 FdsPy.egg-info/dependency_links.txt
 FdsPy.egg-info/top_level.txt
+FdsPy/fpe/__init__.py
+FdsPy/fpe/myfpe.py
+FdsPy/fpe/utils.py
+FdsPy/misc/__init__.py
+FdsPy/misc/utils.py
+FdsPy/pa/__init__.py
+FdsPy/pa/mypaengine.py
+FdsPy/qe/__init__.py
+FdsPy/qe/myqengine.py
+FdsPy/qe/utils.py
+FdsPy/spar/__init__.py
+FdsPy/spar/myspengine.py
