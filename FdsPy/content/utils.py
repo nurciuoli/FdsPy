@@ -48,3 +48,22 @@ def search_people(people_data):
     # SHOW THE LAST FIVE RECORDS
 
     return match_df
+
+def id_lookup(search,search_type,result_limit):
+    #ID Lookup API endpoint for the request call
+    id_endpoint = 'https://api.factset.com/idsearch/v1/idsearch'
+    headers = {'Accept': 'application/json','Content-Type': 'application/json'}
+    jsondata = {}
+    query={}
+    query['pattern'] = search
+    query['entities'] = search_type
+    settings={}
+    settings['result_limit'] = result_limit
+    jsondata['query'] = query
+    jsondata['settings'] = settings
+
+    # Create a POST Request
+    id_post = json.dumps(jsondata)
+    id_response = requests.post(url = id_endpoint, data=id_post, auth = authorization, headers = headers)
+    return pd.json_normalize(id_response.json()['typeahead']['results']).set_index('symbol')
+    #Display the results
