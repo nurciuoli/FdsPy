@@ -22,7 +22,7 @@ def search_symbols(entity_data):
     #create a post request and print the Status Code
 
     entity_match_post = json.dumps(entity_data)
-    entity_match_response = requests.post(url = entity_match_endpoint, data=entity_match_post, auth = authorization, headers = headers, verify= False )
+    entity_match_response = requests.post(url = entity_match_endpoint, data=entity_match_post, auth = authorization, headers = headers, verify= True )
 
     entity_match_data = entity_match_response.json()
     entity_match_df = json_normalize(entity_match_data['data'])
@@ -41,7 +41,7 @@ def search_people(people_data):
     #create a post request and print the Status Code
 
     match_post = json.dumps(people_data)
-    match_response = requests.post(url = people_match_endpoint, data=match_post, auth = authorization, headers = headers, verify= False )
+    match_response = requests.post(url = people_match_endpoint, data=match_post, auth = authorization, headers = headers, verify= True )
 
     match_data = match_response.json()
     match_df = json_normalize(match_data['data'])
@@ -49,7 +49,7 @@ def search_people(people_data):
 
     return match_df
 
-def id_lookup(search,search_type,result_limit):
+def id_lookup(search,search_type= ['equities'],result_limit=10):
     #ID Lookup API endpoint for the request call
     id_endpoint = 'https://api.factset.com/idsearch/v1/idsearch'
     headers = {'Accept': 'application/json','Content-Type': 'application/json'}
