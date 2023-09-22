@@ -5,6 +5,8 @@ FdsPy.egg-info/PKG-INFO
 FdsPy.egg-info/SOURCES.txt
 FdsPy.egg-info/dependency_links.txt
 FdsPy.egg-info/top_level.txt
+FdsPy/content/__init__.py
+FdsPy/content/utils.py
 FdsPy/fpe/__init__.py
 FdsPy/fpe/myfpe.py
 FdsPy/fpe/utils.py
