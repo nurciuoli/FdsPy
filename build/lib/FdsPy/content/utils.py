@@ -67,3 +67,16 @@ def id_lookup(search,search_type= ['equities'],result_limit=10):
     id_response = requests.post(url = id_endpoint, data=id_post, auth = authorization, headers = headers)
     return pd.json_normalize(id_response.json()['typeahead']['results']).set_index('symbol')
     #Display the results
+
+
+def get_qfl_factors(library_request={}):
+    library_endpoint = 'https://api.factset.com/content/factset-quant-factor-library/v1/library'
+    headers = {'Accept': 'application/json','Content-Type': 'application/json'}
+    #create a post request
+    #helper is a utility endpoint, no parameters are required to return the list of metrics
+    library_post = json.dumps(library_request)
+    library_response = requests.post(url = library_endpoint, data = library_post, auth = authorization, headers = headers, verify= True)
+    #create a dataframe from POST request, show dataframe properties
+    library_data = json.loads(library_response.text)
+    library_df = json_normalize(library_data['data'])
+    return library_df
