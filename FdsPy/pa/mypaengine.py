@@ -22,6 +22,9 @@ from fds.analyticsapi.engines.model.pa_calculation_group import PACalculationGro
 from fds.analyticsapi.engines.api.components_api import ComponentsApi
 from fds.analyticsapi.engines.api.groups_api import GroupsApi
 from fds.analyticsapi.engines import ApiException
+from fds.analyticsapi.engines.api.pricing_sources_api import PricingSourcesApi
+from fds.analyticsapi.engines.model.pa_calculation_data_sources import PACalculationDataSources
+from fds.analyticsapi.engines.model.pa_calculation_pricing_source import PACalculationPricingSource
 import os
 from urllib3 import Retry
 import time
@@ -91,6 +94,9 @@ def get_pa_column_statistics():
 #Get all unlinked templated types
 def get_unlinked_template_types():
     return UnlinkedPATemplatesApi(api_client=api_client).get_default_unlinked_pa_template_types()
+
+def get_pricing_sources(directory='Factset',name='',category='',**kwargs):
+    return PricingSourcesApi(api_client=api_client).get_pa_pricing_sources(name=name,category=category,directory=directory)
 
 #format json object to dataframe
 def format_stach(result):      
@@ -207,6 +213,7 @@ def calc_unlinked_template(portfolios= ["LION:IVV-US"],
                                             groups = [{'name' : None,'category':None,'directory' :None}],
                                             holdings_mode = "B&H",
                                             report_frequency = 'Single',
+                                            pricing_sources=None,
                                             **kwargs):
         
         #search all template type ids for match
@@ -242,13 +249,39 @@ def calc_unlinked_template(portfolios= ["LION:IVV-US"],
             dates=PADateParameters(startdate= end_date,enddate=end_date,frequency=report_frequency)
         else:
             dates=PADateParameters(startdate= start_date,enddate=end_date,frequency=report_frequency)
+
+
+        if(pricing_sources==None):
         #build template using first port/bench combo
-        temp_params = UnlinkedPATemplateParameters(directory='personal:',
+            temp_params = UnlinkedPATemplateParameters(directory='personal:',
                                                     template_type_id = template_type_id,
                                                     accounts = [PAIdentifier(id=str(portfolios[0]),holdingsmode=holdings_mode)],
                                                     benchmarks = [PAIdentifier(id=str(benchmarks[0]),holdingsmode=holdings_mode)],
                                                     dates =dates,
                                                     columns =col_id_list,
+                                                    )
+        else:
+            get_pricing_sources_response = PricingSourcesApi(api_client).get_pa_pricing_sources(name=pricing_sources['name'],
+                                                                                 category=pricing_sources['category'],
+                                                                                 directory=pricing_sources['directory'])
+            pricing_source_id = [id for id in list(
+                get_pricing_sources_response[0].data.keys()) if
+                                get_pricing_sources_response[0].data[id].name == pricing_sources['name']
+                                and get_pricing_sources_response[0].data[id].category == pricing_sources['category']
+                                and get_pricing_sources_response[0].data[id].directory == pricing_sources['directory']][0]
+
+
+            pa_pricing_sources = [PACalculationPricingSource(id=pricing_source_id)]
+
+            pa_datasources = PACalculationDataSources(portfoliopricingsources=pa_pricing_sources,
+                                                  useportfoliopricingsourcesforbenchmark=True)
+            temp_params = UnlinkedPATemplateParameters(directory='personal:',
+                                                    template_type_id = template_type_id,
+                                                    accounts = [PAIdentifier(id=str(portfolios[0]),holdingsmode=holdings_mode)],
+                                                    benchmarks = [PAIdentifier(id=str(benchmarks[0]),holdingsmode=holdings_mode)],
+                                                    dates =dates,
+                                                    columns =col_id_list,
+                                                    datasources=pa_datasources,
                                                     )
         #get an ID for template
         pa_root = UnlinkedPATemplateParametersRoot(temp_params)
