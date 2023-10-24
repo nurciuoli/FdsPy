@@ -261,20 +261,22 @@ def calc_unlinked_template(portfolios= ["LION:IVV-US"],
                                                     columns =col_id_list,
                                                     )
         else:
-            get_pricing_sources_response = PricingSourcesApi(api_client).get_pa_pricing_sources(name=pricing_sources['name'],
-                                                                                 category=pricing_sources['category'],
-                                                                                 directory=pricing_sources['directory'])
-            pricing_source_id = [id for id in list(
-                get_pricing_sources_response[0].data.keys()) if
-                                get_pricing_sources_response[0].data[id].name == pricing_sources['name']
-                                and get_pricing_sources_response[0].data[id].category == pricing_sources['category']
-                                and get_pricing_sources_response[0].data[id].directory == pricing_sources['directory']][0]
+            for x in range(len(pricing_sources)):
+                pa_pricing_sources =[]
+                get_pricing_sources_response = PricingSourcesApi(api_client).get_pa_pricing_sources(name=pricing_sources[x]['name'],
+                                                                                    category=pricing_sources[x]['category'],
+                                                                                    directory=pricing_sources[x]['directory'])
+                pricing_source_id = [id for id in list(
+                    get_pricing_sources_response[0].data.keys()) if
+                                    get_pricing_sources_response[0].data[id].name == pricing_sources[x]['name']
+                                    and get_pricing_sources_response[0].data[id].category == pricing_sources[x]['category']
+                                    and get_pricing_sources_response[0].data[id].directory == pricing_sources[x]['directory']][0]
 
 
-            pa_pricing_sources = [PACalculationPricingSource(id=pricing_source_id)]
+                pa_pricing_sources.append(PACalculationPricingSource(id=pricing_source_id))
 
             pa_datasources = PACalculationDataSources(portfoliopricingsources=pa_pricing_sources,
-                                                  useportfoliopricingsourcesforbenchmark=True)
+                                                    useportfoliopricingsourcesforbenchmark=True)
             temp_params = UnlinkedPATemplateParameters(directory='personal:',
                                                     template_type_id = template_type_id,
                                                     accounts = [PAIdentifier(id=str(portfolios[0]),holdingsmode=holdings_mode)],
