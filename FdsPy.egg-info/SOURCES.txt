@@ -12,7 +12,10 @@ FdsPy/fpe/myfpe.py
 FdsPy/fpe/utils.py
 FdsPy/misc/__init__.py
 FdsPy/misc/utils.py
+FdsPy/mymodels/__init__.py
+FdsPy/mymodels/mlfactors.py
 FdsPy/pa/__init__.py
+FdsPy/pa/modelport_utils.py
 FdsPy/pa/mypaengine.py
 FdsPy/qe/__init__.py
 FdsPy/qe/myqengine.py

@@ -1,6 +1,7 @@
 import requests
 import json
 import pandas as pd
+from requests.auth import HTTPBasicAuth
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 from pandas import json_normalize
@@ -11,6 +12,9 @@ import os
 fds_username = os.getenv("FACTSET_USERNAME")
 fds_api_key = os.getenv("FACTSET_API_KEY")
 authorization=(fds_username,fds_api_key)
+
+personal_username = os.getenv("FDS_PERSONAL_USERNAME")
+personal_api_key = os.getenv("FDS_PERSONAL_KEY")
 
 entity_match_endpoint = 'https://api.factset.com/content/factset-concordance/v2/entity-match'
 def search_symbols(entity_data):
@@ -80,3 +84,38 @@ def get_qfl_factors(library_request={}):
     library_data = json.loads(library_response.text)
     library_df = json_normalize(library_data['data'])
     return library_df
+
+
+def get_formulas():
+    url = 'https://api.factset.com/data-dictionary/navigator/products'
+    headers = {
+        'accept': 'application/json',
+    }
+
+    # Replace 'username' and 'password' with your own credentials.
+    response = requests.get(url, headers=headers, auth=HTTPBasicAuth(personal_username, personal_api_key))
+
+    df = pd.DataFrame(response.json())
+    return df
+
+def search_formulas(terms):
+    url = 'https://api.factset.com/data-dictionary/navigator/basic_search'
+    headers = {
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+    }
+    data = {
+        "searchTerms": terms
+    }
+
+    # replace 'username' and 'password' with your own credentials
+    response = requests.post(url, headers=headers, data=json.dumps(data), auth=HTTPBasicAuth(personal_username, personal_api_key))
+
+    df = pd.DataFrame(response.json()['results'])
+    #df = response.json()
+    df_data = pd.json_normalize(df['dataItem'])
+    df_product = pd.json_normalize(df['product'])
+
+    df_final = pd.concat([df_data, df_product], axis=1)
+    return df_final
+
